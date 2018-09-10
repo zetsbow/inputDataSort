@@ -1,5 +1,6 @@
 package service.logic;
 
+import entity.ShareandRest;
 import service.ConvertDataService;
 
 public class ConvertDataServiceLogic implements ConvertDataService {
@@ -10,7 +11,7 @@ public class ConvertDataServiceLogic implements ConvertDataService {
      * @return
      */
     @Override
-    public String convertTextArea(String inputData) {
+    public ShareandRest convertTextArea(String inputData) {
         //TODO 구현계획
         //정렬방식중 병합방식을 이용할 예정. 속성별로 분리 후 합치면서 요구사항에 맞게 정렬
         //1.input값을 숫자, 대문자, 소문자로 3그룹으로 분리
