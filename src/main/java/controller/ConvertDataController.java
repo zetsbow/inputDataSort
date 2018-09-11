@@ -2,8 +2,8 @@ package controller;
 
 import entity.ShareAndRest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import service.ConvertDataService;
 import service.logic.ConvertDataServiceLogic;
 
@@ -17,13 +17,25 @@ public class ConvertDataController {
      * @return
      */
     @RequestMapping("/")
-    @ResponseBody
-    public ShareAndRest convertTextArea() {
+    public ModelAndView view() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sort");
+        return mv;
+    }
 
-        //TODO 화면 미구현으로 인한 InputData 처리
-        String inputData = "1qS24dsABC";
-        int bindUnit = 2;
-        ShareAndRest shareAndRest = convertDataService.convertTextArea(inputData, bindUnit);
-        return shareAndRest;
+    /**
+     * 입력값에 대해 규칙에 맟게 변환된 몫과 나머지 출력 기능
+     * @return
+     */
+    @RequestMapping(value = "/sort", method = RequestMethod.POST )
+    public ModelAndView sort(@ModelAttribute("inputData") String inputData, @ModelAttribute("bindUnit") String bindUnit) {
+        ModelAndView mv = new ModelAndView();
+
+        ShareAndRest shareAndRest = convertDataService.convertTextArea(inputData, Integer.valueOf(bindUnit));
+        mv.addObject("inputData", inputData);
+        mv.addObject("bindUnit", bindUnit);
+        mv.addObject("shareAndRest", shareAndRest);
+        mv.setViewName("sort");
+        return mv;
     }
 }
