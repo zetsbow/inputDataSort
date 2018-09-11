@@ -50,11 +50,11 @@ public class SortUtils {
         int maxSize = alphabets.size() < numbers.size() ? numbers.size() : alphabets.size();
 
         for (int i = 0; i < maxSize; i++) {
-            if (i < numberListSize) {
+            if (i < alphabetListSize) {
                 //알파벳 LIst add
                 mergeDatas.add(alphabets.get(i));
             }
-            if (i < alphabetListSize) {
+            if (i < numberListSize) {
                 //숫자 LIst add
                 mergeDatas.add(numbers.get(i));
             }

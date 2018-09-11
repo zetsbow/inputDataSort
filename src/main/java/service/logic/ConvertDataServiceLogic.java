@@ -32,6 +32,7 @@ public class ConvertDataServiceLogic implements ConvertDataService {
 
         //4.출력 묶음단위를 고려 후 리턴값 반환(몫 + 나머지)
         ShareAndRest shareAndRest = SeparationUtils.findShareAndRest(sortedOutputList, bindUnit);
+
         return shareAndRest;
     }
 }

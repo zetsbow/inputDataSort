@@ -21,8 +21,9 @@ public class ConvertDataController {
     public ShareAndRest convertTextArea() {
 
         //TODO 화면 미구현으로 인한 InputData 처리
-        String inputData = "1qS24ds";
+        String inputData = "1qS24dsABC";
         int bindUnit = 2;
-        return convertDataService.convertTextArea(inputData, bindUnit);
+        ShareAndRest shareAndRest = convertDataService.convertTextArea(inputData, bindUnit);
+        return shareAndRest;
     }
 }

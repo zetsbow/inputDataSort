@@ -1,6 +1,7 @@
 package util;
 
 import entity.AllDataList;
+import entity.DataType;
 import entity.ShareAndRest;
 
 import java.util.ArrayList;
@@ -62,12 +63,27 @@ public class SeparationUtils {
 
     /**
      * 출력묶음단위에 해당하는 몫과 나머지를 조회
-     * @param sortedOutputList
+     * @param sortedOutputs
      * @return
      */
-    public static ShareAndRest findShareAndRest(List<String> sortedOutputList, int bindUnit) {
+    public static ShareAndRest findShareAndRest(List<String> sortedOutputs, int bindUnit) {
+
+        //input size
+        int inputSize = sortedOutputs.size();
 
         ShareAndRest shareAndRest = new ShareAndRest();
+
+        if (inputSize < bindUnit) {
+            //1. 출력묶음 단위가 input의 size보다 크면 몫은 null, 나머지는 input 전체
+            shareAndRest.setRest(CommonUtils.convertListToString(sortedOutputs));
+        } else if (inputSize == bindUnit) {
+            //2. 출력묶음 단위가 input size와 동일하면 몫은 input 전체 나머지는 null
+            shareAndRest.setShare(CommonUtils.convertListToString(sortedOutputs));
+        } else {
+            //3. 출력묶음 단위가 input size보다 작으면 몫은 나머지를 제외한 input 나머지는 나머지
+            shareAndRest.setShare(CommonUtils.convertListToString(sortedOutputs, bindUnit, DataType.SHARE));
+            shareAndRest.setRest(CommonUtils.convertListToString(sortedOutputs, bindUnit, DataType.REST));
+        }
 
         return shareAndRest;
     }
