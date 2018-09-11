@@ -1,6 +1,6 @@
 package entity;
 
-public class ShareandRest {
+public class ShareAndRest {
     /**
      * 몫
      */

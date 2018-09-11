@@ -1,8 +1,8 @@
 package service;
 
-import entity.ShareandRest;
+import entity.ShareAndRest;
 
 public interface ConvertDataService {
 
-    ShareandRest convertTextArea(String inputData);
+    ShareAndRest convertTextArea(String inputData, int bindUnit);
 }

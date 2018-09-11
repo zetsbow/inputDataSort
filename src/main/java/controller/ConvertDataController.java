@@ -1,6 +1,6 @@
 package controller;
 
-import entity.ShareandRest;
+import entity.ShareAndRest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,10 +18,11 @@ public class ConvertDataController {
      */
     @RequestMapping("/")
     @ResponseBody
-    public ShareandRest convertTextArea() {
+    public ShareAndRest convertTextArea() {
 
         //TODO 화면 미구현으로 인한 InputData 처리
         String inputData = "1qS24ds";
-        return convertDataService.convertTextArea(inputData);
+        int bindUnit = 2;
+        return convertDataService.convertTextArea(inputData, bindUnit);
     }
 }
